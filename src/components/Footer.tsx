@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Box,
   chakra,
@@ -60,7 +58,7 @@ export default function SmallCentered() {
           spacing={4}
           justify={{ base: 'center', md: 'space-between' }}
           align={{ base: 'center', md: 'center' }}>
-          <Text>StellaEfz - 2024 | This site is open source.</Text>
+          <Text>Made by StellaEfz - @2024 | This site is open source.</Text>
           <Stack direction={'row'} spacing={6}>
             <SocialButton label={'Twitter'} href={'https://twitter.com/StellaEfz'}>
               <FaTwitter />
