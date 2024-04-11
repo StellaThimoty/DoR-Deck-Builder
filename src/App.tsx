@@ -2,25 +2,27 @@ import reimuSkills from "./cards/reimu.skills.json"
 import chars from './cards/chars.json'
 import { Heading } from '@chakra-ui/react'
 import TouhouCharacters from "./components/TouhouCharacters"
+import Footer from "./components/Footer"
 import TouhouCard from "./components/TouhouCard"
 import './App.css'
 
 function App() {
-
   return (
     <>
+      <div className="content">
       <Heading as='h1' size='2xl'>DoR Deckbuilder</Heading>
       <Heading as='h2' size='lg'>Choose your character</Heading>
 
-      {reimuSkills.map((card) => (
-      <TouhouCard
-      key={["reimu", card.name].join(":")}
-      name={card.name}
-      cost={card.cost}
-      type="skill"
-      imageURL={card.imageURL}
-      />
-      ))}
+        {reimuSkills.map((card) => (
+        <TouhouCard
+        key={["reimu", card.name].join(":")}
+        name={card.name}
+        cost={card.cost}
+        type="skill"
+        imageURL={card.imageURL}
+        />
+        ))}
+      
       {chars.map((char) => (
       <TouhouCharacters
         key={char.name}
@@ -28,7 +30,8 @@ function App() {
         imageURL={char.imageURL}
       />
       ))}
-
+      </div>
+      <Footer/>
     </>
   )
 }
