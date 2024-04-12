@@ -1,18 +1,23 @@
 import reimuSkills from "./cards/reimu.skills.json"
-import chars from './cards/chars.json'
-import { Heading } from '@chakra-ui/react'
-import TouhouCharacters from "./components/TouhouCharacters"
-import Footer from "./components/Footer"
+// import TouhouCharacters from "./components/TouhouCharacters"
+// import Footer from "./components/Footer"
 import TouhouCard from "./components/TouhouCard"
-import './App.css'
+import Character from "./types/Character.type"
+import { useState, useEffect } from "react"
 
 function App() {
+  const [character, characterSet] = useState<Character[]>([])
+
+  useEffect(() => {
+    fetch('http://localhost:10800/chars.json')
+    .then(resp => resp.json())
+    .then(data => characterSet(data))
+  }, [])
   return (
     <>
-      <div className="content">
-      <Heading as='h1' size='2xl'>DoR Deckbuilder</Heading>
-      <Heading as='h2' size='lg'>Choose your character</Heading>
-
+      <div>
+        <h1>DoR Deckbuilder</h1>
+        <h2>Choose your character</h2>
         {reimuSkills.map((card) => (
         <TouhouCard
         key={["reimu", card.name].join(":")}
@@ -22,16 +27,9 @@ function App() {
         imageURL={card.imageURL}
         />
         ))}
-      
-      {chars.map((char) => (
-      <TouhouCharacters
-        key={char.name}
-        name={char.name}
-        imageURL={char.imageURL}
-      />
-      ))}
+        {/* <TouhouCharacters chars={character}/> */}
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   )
 }
