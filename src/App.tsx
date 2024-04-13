@@ -1,5 +1,5 @@
 import reimuSkills from "./cards/reimu.skills.json"
-// import TouhouCharacters from "./components/TouhouCharacters"
+import TouhouCharacters from "./components/TouhouCharacters"
 // import Footer from "./components/Footer"
 import TouhouCard from "./components/TouhouCard"
 import Character from "./types/Character.type"
@@ -27,7 +27,7 @@ function App() {
         imageURL={card.imageURL}
         />
         ))}
-        {/* <TouhouCharacters chars={character}/> */}
+        <TouhouCharacters characters={character}/>
       </div>
       {/* <Footer/> */}
     </>

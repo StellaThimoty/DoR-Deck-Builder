@@ -5,18 +5,35 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardTitle
+} from "@/components/ui/card"
 
+type CharacterProps = {
+  characters: Character[]
+} 
 import Character from "../types/Character.type"
-import { Key } from "react"
 
-const TouhouCharacters: React.FC<Character[]> = (chars) => {
+const TouhouCharacters = ({characters}:CharacterProps) => {
   return (
-    <Carousel>
+    <Carousel opts={{
+      loop:true
+    }}>
       <CarouselContent>
-        {chars.map((char: Character , index: Key) => (
-          <CarouselItem className="basis-1/4" key={index}>
-            <img src={char.imageURL}></img>
-            <h3>{char.name}</h3>
+        {characters.map((char: Character) => (
+          <CarouselItem className="basis-1/4" key={char.name}>
+              <Card>
+                <CardHeader>
+                <img src={char.imageURL}></img>
+                </CardHeader>
+                <CardContent>
+                  <CardTitle>{char.name} <Button>Select girl</Button> </CardTitle>
+                </CardContent>
+              </Card>
           </CarouselItem>
         ))}
       </CarouselContent>
